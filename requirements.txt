@@ -1,7 +1,0 @@
-flask
-flask-WTF
-flask-sqlalchemy 
-flask-migrate
-python-dotenv
-flask-shell-ipython
-faker
