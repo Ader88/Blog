@@ -8,7 +8,7 @@
        <th scope="col">Data</th>
        <th scope="col">Tytuł</th>
        <th scope="col">Treść</th>
-       <th scope="col"></th>
+       <th scope="col">Akcje</th>
      </tr>
    </thead>
    <tbody>
@@ -23,6 +23,11 @@
            </a>
        </td>
        <td>{{ post.body|truncate(100, true) }}</td>
+       <td>
+           <form method="POST" action="{{ url_for('delete_post', entry_id=post.id) }}" onsubmit="return confirm('Czy na pewno chcesz usunąć ten wpis?');">
+               <button type="submit" class="btn btn-danger">Usuń</button>
+           </form>
+       </td>
      </tr>
      {% endfor %}
    </tbody>
