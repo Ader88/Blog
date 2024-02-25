@@ -34,3 +34,5 @@ pip install -r requirements.txt
 flask run
 
 4. Aplikacja będzie dostępna pod adresem: http://127.0.0.1:5000/
+   
+5. Folder blog_screenshots zawiera zrzuty ekranu przedstawiające wygląd bloga. Nie jest on wymagany do działania projektu.
