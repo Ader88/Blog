@@ -38,6 +38,12 @@ def new_post():
 def edit_post(entry_id):
     entry = Entry.query.get_or_404(entry_id)
     form = EntryForm(obj=entry)
+    
+    # Dodaj warunek sprawdzający czy użytkownik jest autorem wpisu
+    if entry.author != current_user:
+        flash("You are not authorized to edit this post", "error")
+        return redirect(url_for('index'))
+    
     if form.validate_on_submit():
         save_entry(form, entry)
         return redirect(url_for('index'))
