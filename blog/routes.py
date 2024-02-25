@@ -7,7 +7,7 @@ from flask_login import login_required, current_user
 
 @app.route("/")
 def index():
-    all_posts = Entry.query.filter_by(is_published=True).order_by(Entry.pub_date.desc())
+    all_posts = Entry.query.filter_by(is_published=True).order_by(Entry.pub_date.desc()).all()
     return render_template("homepage.html", all_posts=all_posts)
 
 @app.route("/generate_entries")
@@ -55,7 +55,7 @@ def login():
             flash('You are now logged in.', 'success')
             if next_url:
                 return redirect(next_url) 
-            return redirect (url_for('index'))
+            return redirect(url_for('index'))
         else:
             errors = form.errors
     return render_template("login_form.html", form=form, errors=errors)
