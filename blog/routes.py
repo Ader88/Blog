@@ -81,5 +81,6 @@ def logout():
 @app.route("/drafts/", methods=['GET'])
 @login_required
 def list_drafts():
+    print("Funkcja list_drafts() została wywołana.")
     drafts = Entry.query.filter_by(is_published=False).order_by(Entry.pub_date.desc())
     return render_template("drafts.html", drafts=drafts)
