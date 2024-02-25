@@ -3,6 +3,7 @@ from blog import app
 from blog.models import Entry, db
 from blog.forms import EntryForm, LoginForm
 from utils import generate_entries
+from flask_login import login_required
 
 @app.route("/")
 def index():
@@ -25,6 +26,7 @@ def save_entry(form, entry=None):
 
 @app.route("/new-post/", methods=["GET", "POST"])
 @app.route("/edit-post/<int:entry_id>", methods=["GET", "POST"])
+@login_required
 def edit_or_create_entry(entry_id=None):
     entry = Entry.query.get_or_404(entry_id) if entry_id else None
     form = EntryForm(obj=entry)
