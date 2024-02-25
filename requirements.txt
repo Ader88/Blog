@@ -1,0 +1,8 @@
+flask
+flask-WTF
+flask-sqlalchemy
+flask-migrate
+flask-login
+flask-shell-ipython
+python-dotenv
+faker
