@@ -25,7 +25,7 @@ Aby uruchomić aplikację, wykonaj następujące kroki:
 
 1. Zainstaluj zależności (bash):
     
-pip install -r requirements.txt]
+pip install -r requirements.txt
 
 2. Ustaw zmienne środowiskowe w pliku .env lub użyj domyślnych wartości.
 
