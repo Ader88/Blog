@@ -20,7 +20,7 @@
        <label class="form-check-label" for="is_published">Wpis opublikowany</label>
    </div>
    {% if current_user.is_authenticated %}
-       <a href="{{ url_for('edit_post', entry_id=entry.id) }}"><i class="fa fa-pencil"></i></a>
+       <a href="{{ url_for('edit_post', entry_id=form.id) }}"><i class="fa fa-pencil"></i></a>
    {% endif %}
    <button type="submit" class="btn btn-primary mt-5">Zapisz</button>
 </form>
