@@ -36,6 +36,9 @@
        <li class="nav-item">
          <a class="nav-link" href="/new-post/">Dodaj nowy wpis</a>
        </li>
+       <li class="nav-item">
+         <a class="nav-link" href="/drafts/">Szkice</a>
+       </li>
      </ul>
      {% if current_user.is_authenticated %}
         <form class="form-inline my-2 my-lg-0" action="{{ url_for('logout') }}" method="POST">
