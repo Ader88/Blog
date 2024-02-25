@@ -33,4 +33,7 @@ class Entry(db.Model):
     pub_date = db.Column(db.DateTime, nullable=False,
         default=datetime.datetime.utcnow)
     is_published = db.Column(db.Boolean, default=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    def __repr__(self):
+        return f'<Entry {self.title}>'
