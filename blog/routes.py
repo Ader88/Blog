@@ -20,6 +20,7 @@ def save_entry(form, entry=None):
     if entry is None:
         entry = Entry()
     form.populate_obj(entry)
+    entry.author = current_user  # Dodajemy informację o autorze wpisu
     db.session.add(entry)
     db.session.commit()
     flash('Wpis został zaktualizowany pomyślnie!', 'success' if entry.id else 'success')
