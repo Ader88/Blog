@@ -49,7 +49,7 @@ def edit_post(entry_id):
     if form.validate_on_submit():
         save_entry(form, entry)
         return redirect(url_for('index'))
-    return render_template("entry_form.html", form=form)
+    return render_template("entry_form.html", form=form, entry_id=entry_id)
     
 @app.route("/login/", methods=['GET', 'POST'])
 def login():
