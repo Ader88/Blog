@@ -1,5 +1,6 @@
-from . import db
+from . import db, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
+import datetime
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -14,8 +15,10 @@ class User(db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
-        
-import datetime
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 class Entry(db.Model):
     id = db.Column(db.Integer, primary_key=True)
