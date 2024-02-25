@@ -84,3 +84,19 @@ def list_drafts():
     print("Funkcja list_drafts() została wywołana.")
     drafts = Entry.query.filter_by(is_published=False).order_by(Entry.pub_date.desc())
     return render_template("drafts.html", drafts=drafts)
+
+@app.route("/delete-post/<int:entry_id>", methods=["POST"])
+@login_required
+def delete_post(entry_id):
+    entry = Entry.query.get_or_404(entry_id)
+    
+    # Sprawdź, czy użytkownik jest autorem wpisu lub adminem
+    if entry.author != current_user and not current_user.is_admin:
+        flash("You are not authorized to delete this post", "error")
+        return redirect(url_for('index'))
+    
+    # Usuń wpis z bazy danych
+    db.session.delete(entry)
+    db.session.commit()
+    flash("Post has been successfully deleted", "success")
+    return redirect(url_for('index'))
